@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>【会議室予約システム】ログイン画面</title>
+	<link href="/css/login/index.css" th:href="@{/css/login/index.css}" rel="stylesheet">
+</head>
+<body>
+	<form th:action="@{/sign_in}" method="post">
+        username<input type="text" name="username">
+        <br/>
+        password<input type="password" name="password">
+        <br/>
+        <input type="submit" value="Login">
+    </form>
+    <script src="/js/login/index.js" th:src="@{/js/login/index.js}"></script>
+</body>
+</html>
