@@ -2,11 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
-	<link href="/css/menu/index.css" th:href="@{/css/menu/index.css}" rel="stylesheet">
+	<title>予約一覧</title>
+	<link href="/css/reservation_list.css" th:href="@{/css/reservation_list.css}" rel="stylesheet">
 </head>
 <body>
-    <p>Hello Spring world!</p>
-    <script src="/js/menu/index.js" th:src="@{/js/menu/index.js}"></script>
+    <table>
+	    <tr>
+	        <th>利用日</th>
+	        <th>開始時刻</th>
+	        <th>終了時刻</th>
+	        <th>利用者</th>
+	        <th></th>
+	    </tr>
+	    <tr th:each="object,iterStat:${reservationList}" th:object="${object}">
+	        <td th:text="*{id.useDate}"></td>
+	        <td th:text="*{id.useStartTime}"></td>
+	        <td th:text="*{useEndTime}"></td>
+	        <td th:text="*{roomUserName}"></td>
+	        <td><a href="/reservation_edit" th:href="@{/reservation_edit(use_date=*{id.useDate},use_start_time=*{id.useStartTime},reserver_id=*{reserverId})}">編集</a></td>
+	    </tr>
+	</table>
+    <script src="/js/reservation_list.js" th:src="@{/js/reservation_list.js}"></script>
 </body>
 </html>

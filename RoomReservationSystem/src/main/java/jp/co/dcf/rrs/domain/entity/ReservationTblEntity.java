@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import jp.co.dcf.rrs.domain.entity.id.ReservationTblEntityId;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -48,5 +47,5 @@ public class ReservationTblEntity {
 	 */
 	@Getter
 	@Setter
-	private LocalTime note;
+	private String note;
 }
