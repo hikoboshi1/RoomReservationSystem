@@ -12,7 +12,7 @@ import lombok.Setter;
 @Table(name = "user_tbl")
 public class UserTblEntity {
 	/**
-	 * åƒL[
+	 * ä¸»ã‚­ãƒ¼ã‚¯ãƒ©ã‚¹
 	 */
 	@EmbeddedId
 	@Getter
@@ -20,7 +20,7 @@ public class UserTblEntity {
 	private UserTblEntityId id;
 
 	/**
-	 * ƒpƒXƒ[ƒh
+	 * ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
 	 */
 	@Getter
 	@Setter

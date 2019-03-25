@@ -14,7 +14,7 @@ import lombok.Setter;
 @Table(name = "reservation_tbl")
 public class ReservationTblEntity {
 	/**
-	 * åƒL[
+	 * ä¸»ã‚­ãƒ¼ã‚¯ãƒ©ã‚¹
 	 */
 	@EmbeddedId
 	@Getter
@@ -22,28 +22,28 @@ public class ReservationTblEntity {
 	private ReservationTblEntityId id;
 
 	/**
-	 * —˜—pI—¹
+	 * åˆ©ç”¨çµ‚äº†æ™‚åˆ»
 	 */
 	@Getter
 	@Setter
 	private LocalTime useEndTime;
 
 	/**
-	 * —\–ñƒ†[ƒU[ID
+	 * äºˆç´„è€…å
 	 */
 	@Getter
 	@Setter
-	private Integer reserverId;
+	private String reserverName;
 
 	/**
-	 * —˜—pÒ–¼
+	 * ä¼šè­°å®¤åˆ©ç”¨è€…
 	 */
 	@Getter
 	@Setter
 	private String roomUserName;
 
 	/**
-	 * ”õl
+	 * å‚™è€ƒ
 	 */
 	@Getter
 	@Setter

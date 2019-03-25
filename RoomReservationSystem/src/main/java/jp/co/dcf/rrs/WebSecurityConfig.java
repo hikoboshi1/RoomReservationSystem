@@ -19,28 +19,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private LoginApplicationService loginApplicationService;
 
-	/**
-	 * フォームの値と比較するDBから取得したパスワードは暗号化されているのでフォームの値も暗号化するために利用
-	 * 
-	 * @return bCryptPasswordEncoder
-	 */
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 		return bCryptPasswordEncoder;
 	}
 
-	/**
-	 * 静的ファイルの設定
-	 */
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/image/**", "/css/**", "/javascript/**");
 	}
 
-	/**
-	 * HTTPリクエスト関連の設定
-	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/login")
@@ -49,9 +38,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.logoutUrl("/logout").logoutSuccessUrl("/login?logout").permitAll();
 	}
 
-	/**
-	 * ログイン認証関連の設定
-	 */
 	@Autowired
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		// auth.inMemoryAuthentication().withUser("dummyuser").password("dummypassword").roles("DUMMY");

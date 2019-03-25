@@ -12,14 +12,14 @@ import lombok.Setter;
 @EqualsAndHashCode
 public class UserTblEntityId implements Serializable {
 	/**
-	 * ’¼—ñ‰»—p¯•Êq
+	 * ç›´åˆ—åŒ–è­˜åˆ¥å­
 	 */
 	private static final long serialVersionUID = -4658249526082343743L;
 
 	/**
-	 * ƒ†[ƒU–¼
+	 * åˆ©ç”¨è€…å
 	 */
 	@Getter
 	@Setter
-	String username;
+	String userName;
 }

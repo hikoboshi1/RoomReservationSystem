@@ -14,19 +14,19 @@ import lombok.Setter;
 @EqualsAndHashCode
 public class ReservationTblEntityId implements Serializable {
 	/**
-	 * ’¼—ñ‰»—p¯•Êq
+	 * ç›´åˆ—åŒ–è­˜åˆ¥å­
 	 */
 	private static final long serialVersionUID = -7067344067219037058L;
 
 	/**
-	 * —˜—p“ú
+	 * åˆ©ç”¨æ—¥
 	 */
 	@Getter
 	@Setter
 	LocalDate useDate;
 
 	/**
-	 * —˜—pŠJn
+	 * åˆ©ç”¨é–‹å§‹æ™‚åˆ»
 	 */
 	@Getter
 	@Setter

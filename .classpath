@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="RoomReservationSystem/src/main/java"/>
+	<classpathentry kind="src" path="RoomReservationSystem/src/test/java"/>
+	<classpathentry kind="lib" path="RoomReservationSystem/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="RoomReservationSystem/lib/lombok.jar"/>
+	<classpathentry kind="output" path="RoomReservationSystem/bin/main"/>
+</classpath>
