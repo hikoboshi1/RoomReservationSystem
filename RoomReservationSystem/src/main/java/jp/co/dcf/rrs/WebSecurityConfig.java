@@ -34,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/login")
 				.loginProcessingUrl("/login-processing").usernameParameter("username").passwordParameter("password")
-				.defaultSuccessUrl("/login-processing").failureUrl("/login?error").permitAll().and().logout()
+				.defaultSuccessUrl("/login-success").failureUrl("/login?error").permitAll().and().logout()
 				.logoutUrl("/logout").logoutSuccessUrl("/login?logout").permitAll();
 	}
 

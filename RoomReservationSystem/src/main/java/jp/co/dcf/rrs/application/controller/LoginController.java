@@ -16,7 +16,7 @@ public class LoginController {
 		return "/login";
 	}
 
-	@RequestMapping({ "/login-processing" })
+	@RequestMapping({ "/login-success" })
 	public String processing() {
 		return "redirect:/reservation_list";
 	}
