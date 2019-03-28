@@ -1,8 +1,6 @@
 package jp.co.dcf.rrs.domain.entity.id;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 import javax.persistence.Embeddable;
 
@@ -19,16 +17,9 @@ public class ReservationTblEntityId implements Serializable {
 	private static final long serialVersionUID = -7067344067219037058L;
 
 	/**
-	 * 利用日
+	 * 予約ＩＤ
 	 */
 	@Getter
 	@Setter
-	LocalDate useDate;
-
-	/**
-	 * 利用開始時刻
-	 */
-	@Getter
-	@Setter
-	LocalTime useStartTime;
+	Integer id;
 }

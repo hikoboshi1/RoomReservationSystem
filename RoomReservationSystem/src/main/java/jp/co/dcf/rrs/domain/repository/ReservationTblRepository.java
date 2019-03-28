@@ -20,7 +20,7 @@ public interface ReservationTblRepository extends JpaRepository<ReservationTblEn
 	 * @param useDate
 	 * @return
 	 */
-	public List<ReservationTblEntity> findByIdUseDate(LocalDate useDate);
+	public List<ReservationTblEntity> findByUseDate(LocalDate useDate);
 
 	/**
 	 * 重複時間検索
@@ -30,11 +30,11 @@ public interface ReservationTblRepository extends JpaRepository<ReservationTblEn
 	 * @param useEndTime
 	 * @return
 	 */
-	@Query("select t from ReservationTblEntity t where t.id.useDate = :useDate and ("
-			+ "(:useStartTime <= t.id.useStartTime and useEndTime <= :useEndTime) or "
-			+ "(:useStartTime <= t.id.useStartTime and t.id.useStartTime < :useEndTime) or "
+	@Query("select t from ReservationTblEntity t where t.useDate = :useDate and ("
+			+ "(:useStartTime <= t.useStartTime and useEndTime <= :useEndTime) or "
+			+ "(:useStartTime <= t.useStartTime and t.useStartTime < :useEndTime) or "
 			+ "(:useStartTime < useEndTime and useEndTime <= :useEndTime) or "
-			+ "(t.id.useStartTime <= :useStartTime and :useEndTime <= useEndTime))")
+			+ "(t.useStartTime <= :useStartTime and :useEndTime <= useEndTime))")
 	public List<ReservationTblEntity> findTimeOverlapReservation(@Param("useDate") LocalDate useDate,
 			@Param("useStartTime") LocalTime useStartTime, @Param("useEndTime") LocalTime useEndTime);
 }

@@ -14,10 +14,8 @@ public class ReservationEditController {
 	ReservationListApplicationService reservationListApplicationService;
 
 	@RequestMapping({ "/reservation_edit" })
-	public String index(Model model, @RequestParam("use_date") String useDate,
-			@RequestParam("use_start_time") String useStartTime) {
-		model.addAttribute("useDate", useDate);
-		model.addAttribute("useStartTime", useStartTime);
+	public String index(Model model, @RequestParam("reservation_id") String reservationId) {
+		model.addAttribute("reservationId", reservationId);
 		return "/reservation_edit";
 	}
 }

@@ -26,7 +26,7 @@ public class LoginApplicationService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserTblEntityId id = new UserTblEntityId();
-		id.setUserName(username);
+		id.setUsername(username);
 		Optional<UserTblEntity> userTblEntityOpt = userTblRepository.findById(id);
 		if (!userTblEntityOpt.isPresent()) {
 			throw new UsernameNotFoundException("User " + username + " was not found in the database.");
@@ -38,7 +38,7 @@ public class LoginApplicationService implements UserDetailsService {
 
 		UserTblEntity userTblEntity = userTblEntityOpt.get();
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		return (UserDetails) new User(userTblEntity.getId().getUserName(), encoder.encode(userTblEntity.getPassword()),
+		return (UserDetails) new User(userTblEntity.getId().getUsername(), encoder.encode(userTblEntity.getPassword()),
 				grantList);
 	}
 }

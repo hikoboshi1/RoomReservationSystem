@@ -1,5 +1,6 @@
 package jp.co.dcf.rrs.domain.entity;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 import javax.persistence.EmbeddedId;
@@ -22,6 +23,20 @@ public class ReservationTblEntity {
 	private ReservationTblEntityId id;
 
 	/**
+	 * 利用日
+	 */
+	@Getter
+	@Setter
+	LocalDate useDate;
+
+	/**
+	 * 利用開始時刻
+	 */
+	@Getter
+	@Setter
+	LocalTime useStartTime;
+
+	/**
 	 * 利用終了時刻
 	 */
 	@Getter
@@ -40,7 +55,7 @@ public class ReservationTblEntity {
 	 */
 	@Getter
 	@Setter
-	private String roomUserName;
+	private String roomUsername;
 
 	/**
 	 * 備考
