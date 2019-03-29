@@ -1,0 +1,29 @@
+main {
+  height: 100%;
+  width: 100%;
+  /* 子要素を中央に配置する */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#main_box {
+  overflow: hidden;
+  height: 300px;
+  width: 500px;
+  border: solid 1px;
+  /* 子要素を中央に配置する */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.username, .password {
+  display:block;
+  float: left;
+  width: 100px;
+}
+
+.login_button {
+  float: right;
+}
