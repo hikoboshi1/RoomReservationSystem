@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<title>予約一覧</title>
-	<link href="/css/reservation_list.css" th:href="@{/css/reservation_list.css}" rel="stylesheet">
+　　<meta charset="UTF-8">
+　　<title>予約一覧</title>
+　　<link href="/css/reservation_list.css" th:href="@{/css/reservation_list.css}" rel="stylesheet">
 </head>
 <body>
-<header></header>
-<main>
-    <a href="/reservation_edit" th:href="@{/reservation_edit}">新規作成</a>
-    <table>
-	    <tr>
+  <header>
+  </header>
+  <main>
+    <div>
+      <a href="/reservation_edit" th:href="@{/reservation_edit}">新規作成</a>
+      <table>
+        <thead>
+	      <tr>
 	        <th>利用日</th>
 	        <th>開始時刻</th>
 	        <th>終了時刻</th>
 	        <th>利用者</th>
 	        <th></th>
-	    </tr>
-	    <tr th:each="object,iterStat:${reservationList}" th:object="${object}">
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr th:each="object,iterStat:${reservationList}" th:object="${object}">
 	        <td th:text="*{useDate}"></td>
 	        <td th:text="*{useStartTime}"></td>
 	        <td th:text="*{useEndTime}"></td>
 	        <td th:text="*{roomUsername}"></td>
 	        <td><a href="/reservation_edit" th:href="@{/reservation_edit(reservation_id=*{id.id})}">編集</a></td>
-	    </tr>
-	</table>
-    <script src="/js/reservation_list.js" th:src="@{/js/reservation_list.js}"></script>
-</main>
-<footer></footer>
+	      </tr>
+	    </tbody>
+	  </table>
+      <script src="/js/reservation_list.js" th:src="@{/js/reservation_list.js}"></script>
+    </div>
+  </main>
+  <footer>
+  </footer>
 </body>
 </html>
