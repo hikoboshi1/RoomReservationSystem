@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="UTF-8">
-	<title>ログイン</title>
-	<link href="/css/login.css" th:href="@{/css/login.css}" rel="stylesheet">
-</head>
-<body>
-<header></header>
-<main>
-    <div id="main_box">
-	<form th:action="@{/login-processing}" method="post">
-        <label th:for="username" th:text="username" class="username">username</label><input type="text" name="username">
-        <br/>
-        <label th:for="password" th:text="password" class="password">password</label><input type="password" name="password">
-        <br/>
-        <input type="submit" value="Login" class="login_button">
+  <head>
+    <meta charset="UTF-8">
+    <title>ログイン</title>
+    <link href="/css/login.css" th:href="@{/css/login.css}" rel="stylesheet">
+  </head>
+  <body>
+  <header>
+  </header>
+  <main>
+    <form class="login_form" th:action="@{/login-processing}" method="post">
+      <div>
+        <p>
+          <label th:for="username" th:text="username" class="username">username</label>
+          <input type="text" name="username">
+        </p>
+        <p>
+          <label th:for="password" th:text="password" class="password">password</label>
+          <input type="password" name="password">
+        </p>
+        <p>
+          <input type="submit" value="Login" class="login_button">
+        </p>
+      </div>
     </form>
-    </div>
-</main>
-<footer></footer>
+  </main>
+  <footer>
+  </footer>
 </body>
 </html>

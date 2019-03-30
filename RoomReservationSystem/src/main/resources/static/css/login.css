@@ -1,29 +1,51 @@
-main {
-  height: 100%;
+@charset "UTF-8";
+
+* {
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+html, body, main {
   width: 100%;
-  /* 子要素を中央に配置する */
+  height: 100%; 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#main_box {
-  overflow: hidden;
-  height: 300px;
+form.login_form {
   width: 500px;
-  border: solid 1px;
-  /* 子要素を中央に配置する */
+  height: 300px;
+  border: solid 1px #000000;
+  background-color: #bce2e8;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.username, .password {
-  display:block;
-  float: left;
-  width: 100px;
+form.login_form * {
+  margin: 5px 10px;
 }
 
-.login_button {
-  float: right;
+form.login_form div {
+  margin: 0px;
+}
+
+form.login_form p:last-of-type {
+  text-align: right;
+}
+
+form.login_form label[for] {
+  display: block;
+  font-size: 13px;
+}
+
+input[type="text"], input[type="password"] {
+  width: 455px;
+  padding: 5px 10px;
+}
+
+input[type="submit"] {
+  width: 60px;
+  height: 30px;
 }
