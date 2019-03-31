@@ -23,6 +23,7 @@ thead, tbody {
 
 table {
   border: solid 1px #000000;
+  border-radius: 5px 5px 0px 0px;
 }
 
 tbody {
@@ -49,6 +50,10 @@ th, td {
 
 th ~ th, td ~ td {
   border-left: dashed 1px #000000;
+}
+
+th:first-child {
+  border-radius: 5px 0px 0px 0px;
 }
 
 th:last-child, td:last-child {
