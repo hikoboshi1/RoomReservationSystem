@@ -48,6 +48,13 @@ th, td {
   width: 100px;
 }
 
+td p {
+  width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 th ~ th, td ~ td {
   border-left: dashed 1px #000000;
 }

@@ -23,10 +23,10 @@
 	    </thead>
 	    <tbody>
 	      <tr th:each="object,iterStat:${reservationList}" th:object="${object}">
-	        <td th:text="*{useDate}"></td>
-	        <td th:text="*{useStartTime}"></td>
-	        <td th:text="*{useEndTime}"></td>
-	        <td th:text="*{roomUsername}"></td>
+	        <td><p th:text="*{useDate}"></p></td>
+	        <td><p th:text="*{useStartTime}"></p></td>
+	        <td><p th:text="*{useEndTime}"></p></td>
+	        <td><p th:text="roomUsername"></p></td>
 	        <td><a href="/reservation_edit" th:href="@{/reservation_edit(reservation_id=*{id.id})}">編集</a></td>
 	      </tr>
 	    </tbody>
