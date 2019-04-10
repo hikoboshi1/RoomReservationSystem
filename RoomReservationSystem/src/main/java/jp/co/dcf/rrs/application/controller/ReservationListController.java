@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.dcf.rrs.application.service.ReservationListApplicationService;
 import jp.co.dcf.rrs.domain.entity.ReservationTblEntity;
@@ -16,9 +17,10 @@ public class ReservationListController {
 	ReservationListApplicationService reservationListApplicationService;
 
 	@RequestMapping({ "/reservation_list" })
-	public String index(Model model) {
-		List<ReservationTblEntity> reservationList = reservationListApplicationService.getReservationList();
-		model.addAttribute("reservationList", reservationList);
-		return "/reservation_list";
+	public ModelAndView index(ModelAndView mav) {
+		List<ReservationTblEntity> reservationList = reservationListApplicationService.getAllReservationList();
+		mav.addObject("reservationList", reservationList);
+		mav.setViewName("reservation_list");
+		return mav;
 	}
 }

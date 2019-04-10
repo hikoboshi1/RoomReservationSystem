@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import jp.co.dcf.rrs.application.service.LoginApplicationService;
 
@@ -35,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/login")
 				.loginProcessingUrl("/login-processing").usernameParameter("username").passwordParameter("password")
 				.defaultSuccessUrl("/login-success").successForwardUrl("/login-success").failureUrl("/login?error")
-				.permitAll().and().logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout").permitAll();
+				.permitAll().and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout").permitAll();
 	}
 
 	@Autowired

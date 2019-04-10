@@ -1,10 +1,13 @@
 package jp.co.dcf.rrs.application.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.dcf.rrs.application.service.ReservationListApplicationService;
 
@@ -14,8 +17,9 @@ public class ReservationEditController {
 	ReservationListApplicationService reservationListApplicationService;
 
 	@RequestMapping({ "/reservation_edit" })
-	public String index(Model model, @RequestParam(name = "reservation_id", required = false) String reservationId) {
-		model.addAttribute("reservationId", reservationId);
-		return "/reservation_edit";
+	public ModelAndView index(ModelAndView mav, @RequestParam("reservation_id") Optional<String> reservationId) {
+		mav.addObject("reservationId", reservationId);
+		mav.setViewName("reservation_edit");
+		return mav;
 	}
 }
