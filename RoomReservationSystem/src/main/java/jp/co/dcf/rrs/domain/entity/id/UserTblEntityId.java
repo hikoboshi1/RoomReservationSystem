@@ -21,5 +21,5 @@ public class UserTblEntityId implements Serializable {
 	 */
 	@Getter
 	@Setter
-	String username;
+	Integer id;
 }

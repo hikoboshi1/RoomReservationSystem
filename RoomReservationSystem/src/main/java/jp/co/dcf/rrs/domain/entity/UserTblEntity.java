@@ -20,6 +20,13 @@ public class UserTblEntity {
 	private UserTblEntityId id;
 
 	/**
+	 * 名前
+	 */
+	@Getter
+	@Setter
+	private String username;
+	
+	/**
 	 * パスワード
 	 */
 	@Getter
