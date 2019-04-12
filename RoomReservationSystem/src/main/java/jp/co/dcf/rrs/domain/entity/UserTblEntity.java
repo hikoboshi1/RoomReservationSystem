@@ -4,7 +4,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import jp.co.dcf.rrs.domain.entity.id.UserTblEntityId;
+import jp.co.dcf.rrs.domain.entity.pk.UserTblEntityPK;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +17,7 @@ public class UserTblEntity {
 	@EmbeddedId
 	@Getter
 	@Setter
-	private UserTblEntityId id;
+	private UserTblEntityPK pk;
 
 	/**
 	 * 名前

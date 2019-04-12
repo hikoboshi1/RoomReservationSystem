@@ -4,7 +4,8 @@ import java.time.LocalTime;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import jp.co.dcf.rrs.domain.entity.id.ReservationTblEntityId;
+
+import jp.co.dcf.rrs.domain.entity.pk.ReservationTblEntityPK;
 import lombok.Getter;
 import lombok.Setter;
 @Entity
@@ -16,7 +17,7 @@ public class ReservationTblEntity {
 	@EmbeddedId
 	@Getter
 	@Setter
-	private ReservationTblEntityId id;
+	private ReservationTblEntityPK id;
 	/**
 	 * 利用日
 	 */

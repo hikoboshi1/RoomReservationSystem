@@ -15,7 +15,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import jp.co.dcf.rrs.domain.entity.UserTblEntity;
-import jp.co.dcf.rrs.domain.entity.id.UserTblEntityId;
 import jp.co.dcf.rrs.domain.repository.UserTblRepository;
 
 @Service
@@ -25,7 +24,6 @@ public class LoginApplicationService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserTblEntityId id = new UserTblEntityId();
 		List<UserTblEntity> userTblEntityList = userTblRepository.findByUsername(username);
 		if (userTblEntityList.isEmpty()) {
 			throw new UsernameNotFoundException("User " + username + " was not found in the database.");
@@ -37,7 +35,7 @@ public class LoginApplicationService implements UserDetailsService {
 
 		UserTblEntity userTblEntity = userTblEntityList.get(0);
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		return (UserDetails) new User(userTblEntity.getId().getId().toString(), encoder.encode(userTblEntity.getPassword()),
+		return (UserDetails) new User(userTblEntity.getPk().getId().toString(), encoder.encode(userTblEntity.getPassword()),
 				grantList);
 	}
 }

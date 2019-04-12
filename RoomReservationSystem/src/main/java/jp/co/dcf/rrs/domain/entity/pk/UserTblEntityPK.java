@@ -1,4 +1,4 @@
-package jp.co.dcf.rrs.domain.entity.id;
+package jp.co.dcf.rrs.domain.entity.pk;
 
 import java.io.Serializable;
 
@@ -10,7 +10,7 @@ import lombok.Setter;
 
 @Embeddable
 @EqualsAndHashCode
-public class UserTblEntityId implements Serializable {
+public class UserTblEntityPK implements Serializable {
 	/**
 	 * 直列化識別子
 	 */
