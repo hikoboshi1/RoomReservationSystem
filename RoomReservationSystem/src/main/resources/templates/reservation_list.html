@@ -22,7 +22,7 @@
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <tr th:each="object,iterStat:${reservationList}" th:object="${object}">
+	      <tr th:each="x:${reservationList}" th:object="${x}">
 	        <td><p th:text="*{useDate}"></p></td>
 	        <td><p th:text="*{useStartTime}"></p></td>
 	        <td><p th:text="*{useEndTime}"></p></td>
