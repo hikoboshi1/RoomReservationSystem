@@ -35,7 +35,7 @@ public class LoginApplicationService implements UserDetailsService {
 
 		UserTblEntity userTblEntity = userTblEntityList.get(0);
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		return (UserDetails) new User(userTblEntity.getPk().getId().toString(), encoder.encode(userTblEntity.getPassword()),
+		return (UserDetails) new User(userTblEntity.getId().toString(), encoder.encode(userTblEntity.getPassword()),
 				grantList);
 	}
 }

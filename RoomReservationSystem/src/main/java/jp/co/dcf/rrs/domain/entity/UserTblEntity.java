@@ -1,10 +1,9 @@
 package jp.co.dcf.rrs.domain.entity;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
-import jp.co.dcf.rrs.domain.entity.pk.UserTblEntityPK;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,12 +11,12 @@ import lombok.Setter;
 @Table(name = "user_tbl")
 public class UserTblEntity {
 	/**
-	 * 主キークラス
+	 * 主キー
 	 */
-	@EmbeddedId
+	@Id
 	@Getter
 	@Setter
-	private UserTblEntityPK pk;
+	private Integer id;
 
 	/**
 	 * 名前

@@ -10,10 +10,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import jp.co.dcf.rrs.domain.entity.ReservationTblEntity;
-import jp.co.dcf.rrs.domain.entity.pk.ReservationTblEntityPK;
 
 @Repository
-public interface ReservationTblRepository extends JpaRepository<ReservationTblEntity, ReservationTblEntityPK> {
+public interface ReservationTblRepository extends JpaRepository<ReservationTblEntity, Integer> {
 	/**
 	 * 利用日検索
 	 * 

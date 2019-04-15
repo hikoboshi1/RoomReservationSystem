@@ -3,21 +3,25 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
-import jp.co.dcf.rrs.domain.entity.pk.ReservationTblEntityPK;
+
 import lombok.Getter;
 import lombok.Setter;
 @Entity
 @Table(name = "reservation_tbl")
 public class ReservationTblEntity {
 	/**
-	 * 主キークラス
+	 * 主キー
 	 */
-	@EmbeddedId
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	@Getter
 	@Setter
-	private ReservationTblEntityPK id;
+	private Integer id;
 	/**
 	 * 利用日
 	 */
