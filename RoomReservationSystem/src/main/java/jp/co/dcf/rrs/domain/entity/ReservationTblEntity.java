@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -41,11 +43,13 @@ public class ReservationTblEntity {
 	@Setter
 	private LocalTime useEndTime;
 	/**
-	 * 予約者名
+	 * 予約者
 	 */
 	@Getter
 	@Setter
-	private String reserverId;
+	@ManyToOne
+	private UserTblEntity reserver;
+
 	/**
 	 * 会議室利用者
 	 */

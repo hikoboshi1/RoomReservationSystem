@@ -1,7 +1,10 @@
 package jp.co.dcf.rrs.domain.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -31,4 +34,12 @@ public class UserTblEntity {
 	@Getter
 	@Setter
 	private String password;
+	
+	/**
+	 * 予約
+	 */
+	@Getter
+	@Setter
+	@OneToMany(mappedBy = "reserver")
+	private List<ReservationTblEntity> reservation;
 }
