@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.dcf.rrs.application.service.ReservationListApplicationService;
 import jp.co.dcf.rrs.domain.entity.ReservationTblEntity;
+import jp.co.dcf.rrs.domain.entity.UserTblEntity;
 
 @Controller
 public class ReservationListController {
@@ -21,7 +23,7 @@ public class ReservationListController {
 	ReservationListApplicationService reservationListApplicationService;
 	
 	@RequestMapping({ "/reservation_list" })
-	public ModelAndView index(ModelAndView mav) {
+	public ModelAndView index(ModelAndView mav, @AuthenticationPrincipal UserTblEntity user) {
 		List<ReservationTblEntity> reservationList = reservationListApplicationService.getAllReservationList();
 		mav.addObject("reservationList", reservationList);
 		mav.setViewName("reservation_list");

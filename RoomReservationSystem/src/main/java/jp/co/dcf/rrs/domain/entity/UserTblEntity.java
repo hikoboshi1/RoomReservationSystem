@@ -1,5 +1,7 @@
 package jp.co.dcf.rrs.domain.entity;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -7,12 +9,30 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import lombok.Getter;
 import lombok.Setter;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "user_tbl")
-public class UserTblEntity {
+public class UserTblEntity extends User{
+	
+	static final List<GrantedAuthority> AUTHORITIES = new ArrayList<GrantedAuthority>();
+	
+    public UserTblEntity() {
+    	super("user","pass",AUTHORITIES);
+    }
+
+	public UserTblEntity(String username, String password, Collection<? extends GrantedAuthority> authorities) {
+		super(username, password, authorities);
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
+	
+
 	/**
 	 * 主キー
 	 */
