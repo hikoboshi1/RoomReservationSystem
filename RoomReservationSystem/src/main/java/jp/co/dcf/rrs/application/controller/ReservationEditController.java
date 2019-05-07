@@ -12,11 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 import jp.co.dcf.rrs.application.service.ReservationListApplicationService;
 
 @Controller
+@RequestMapping("/reservation")
 public class ReservationEditController {
 	@Autowired
 	ReservationListApplicationService reservationListApplicationService;
 
-	@RequestMapping({ "/reservation_edit" })
+	@RequestMapping(value = { "","/{reservation_id}" })
 	public ModelAndView index(ModelAndView mav, @RequestParam("reservation_id") Optional<String> reservationId) {
 		mav.addObject("reservationId", reservationId);
 		mav.setViewName("reservation_edit");
