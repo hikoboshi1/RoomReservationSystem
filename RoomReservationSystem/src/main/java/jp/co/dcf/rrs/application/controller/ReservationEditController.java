@@ -17,7 +17,7 @@ public class ReservationEditController {
 	@Autowired
 	ReservationListApplicationService reservationListApplicationService;
 
-	@RequestMapping(value = { "","/{reservation_id}" })
+	@RequestMapping(value = { "/{reservation_id}" })
 	public ModelAndView index(ModelAndView mav, @RequestParam("reservation_id") Optional<String> reservationId) {
 		mav.addObject("reservationId", reservationId);
 		mav.setViewName("reservation_edit");
