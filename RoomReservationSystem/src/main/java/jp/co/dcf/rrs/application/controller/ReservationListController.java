@@ -18,11 +18,12 @@ import jp.co.dcf.rrs.domain.entity.ReservationTblEntity;
 import jp.co.dcf.rrs.domain.entity.UserTblEntity;
 
 @Controller
+@RequestMapping("/reservations")
 public class ReservationListController {
 	@Autowired
 	ReservationListApplicationService reservationListApplicationService;
 	
-	@RequestMapping({ "/reservation_list" })
+	@RequestMapping({ "/","/list" })
 	public ModelAndView index(ModelAndView mav, @AuthenticationPrincipal UserTblEntity user) {
 		List<ReservationTblEntity> reservationList = reservationListApplicationService.getAllReservationList();
 		mav.addObject("reservationList", reservationList);

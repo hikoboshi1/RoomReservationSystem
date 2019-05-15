@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import jp.co.dcf.rrs.application.service.ReservationListApplicationService;
 
 @Controller
-@RequestMapping("/reservation")
+@RequestMapping("/reservations")
 public class ReservationEditController {
 	@Autowired
 	ReservationListApplicationService reservationListApplicationService;

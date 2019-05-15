@@ -18,6 +18,6 @@ public class LoginController {
 
 	@RequestMapping({ "/login-success" })
 	public String loginSuccess() {
-		return "redirect:/reservation_list";
+		return "redirect:/reservations/list";
 	}
 }
