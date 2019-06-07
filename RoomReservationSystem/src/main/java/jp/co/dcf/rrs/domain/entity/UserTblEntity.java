@@ -13,12 +13,15 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "user_tbl")
+@EqualsAndHashCode(callSuper=false)
 public class UserTblEntity extends User{
 	
 	static final List<GrantedAuthority> AUTHORITIES = new ArrayList<GrantedAuthority>();
