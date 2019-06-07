@@ -21,7 +21,7 @@ import lombok.Setter;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "user_tbl")
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(of= {"id"},callSuper=false)
 public class UserTblEntity extends User{
 	
 	static final List<GrantedAuthority> AUTHORITIES = new ArrayList<GrantedAuthority>();
