@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>予約一覧</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+	</head>
+	<body>
+		<header th:replace="header"></header>
+		<div class="container">
+		<div class="row">
+		<div class="col-lg-8 offset-lg-2">
+			<a class="btn btn-primary my-2" href="edit.html" th:href="@{/reservations/new}">新規作成</a>
+			<table class="table table-sm table-hover">
+				<thead class="thead-light">
+					<tr>
+						<th scope="col">利用日</th>
+						<th scope="col">開始時刻</th>
+						<th scope="col">終了時刻</th>
+						<th scope="col">利用者</th>
+						<th scope="col"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="x:${reservationList}" th:object="${x}">
+						<td class="py-2" ><span th:text="*{useDate}"></span></td>
+						<td class="py-2" ><span th:text="*{useStartTime}"></span></td>
+						<td class="py-2"><span th:text="*{useEndTime}"></span></td>
+						<td class="py-2"><span th:text="*{roomUsername}"></span></td>
+						<td class="py-2"><a href="/reservation_edit">詳細</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		</div>
+		</div>
+		<footer>
+		</footer>
+	</body>
+</html>

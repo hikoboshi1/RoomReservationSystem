@@ -26,20 +26,20 @@ public class ReservationsController {
 	public ModelAndView index(ModelAndView mav, @AuthenticationPrincipal User user) {
 		List<Reservation> reservationList = reservationsService.getAllReservationList();
 		mav.addObject("reservationList", reservationList);
-		mav.setViewName("reservation_list");
+		mav.setViewName("reservations/list");
 		return mav;
 	}
 	
 	@RequestMapping(value = { "/new" })
 	public ModelAndView newReservation(ModelAndView mav, @RequestParam("date") Optional<String> id) {
-		mav.setViewName("reservation_edit");
+		mav.setViewName("reservations/edit");
 		return mav;
 	}
 	
 	@RequestMapping(value = { "/{id}" })
 	public ModelAndView edit(ModelAndView mav, @PathVariable("id") Optional<Integer> id) {
 		mav.addObject("id", id);
-		mav.setViewName("reservation_edit");
+		mav.setViewName("reservations/edit");
 		return mav;
 	}
 	

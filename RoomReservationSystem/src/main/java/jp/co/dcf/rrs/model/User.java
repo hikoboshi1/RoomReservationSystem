@@ -50,7 +50,7 @@ public class User implements UserDetails{
 	@Getter
 	@Setter
 	@OneToMany(mappedBy = "reserver")
-	private List<Reservation> reservations;
+	private List<Reservation> reservations = new ArrayList<Reservation>();
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -3,30 +3,46 @@
   <head>
     <meta charset="UTF-8">
     <title>ログイン</title>
-    <link href="/css/login.css" th:href="@{/css/login.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
   </head>
-  <body>
-  <header th:replace="header"></header>
-    <main>
-    <form class="login_form" th:action="@{/login}" method="post">
-      <div>
-        <p>
-          <label th:for="username" th:text="username" class="username">ユーザー名</label>
-          <input type="text" name="username">
-        </p>
-        <p>
-          <label th:for="password" th:text="password" class="password">パスワード</label>
-          <input type="password" name="password">
-        </p>
-        <p>
-          <input type="submit" value="Login" class="login_button">
-          <p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"  th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}">
-          ログインIDまはたパスワードが間違っています。
-          </p>
-        </p>
+  <body class="bg-light">
+    <header th:replace="header"></header>
+    <div class="container d-flex align-items-center">
+      <div class="mx-auto card w-50">
+        <div class="card-header bg-primary text-white">
+          ログイン
+        </div>
+        <div class="card-body">
+          <form th:action="@{/login}" method="post">
+            <div class="row my-3">
+              <div class="col-sm-3">
+                <label th:for="username" class="my-1">ユーザー名</label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="username">
+              </div>
+            </div>
+            <div class="row my-3">
+              <div class="col-sm-3">
+                <label th:for="password" class="my-1">パスワード</label>
+              </div>
+              <div class="col-sm-9">
+                <input type="password" class="form-control" name="password">
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="text-center btn btn-primary w-50">
+                ログイン
+              </button>
+            </div>
+            <p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"  th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}">
+              ログインIDまはたパスワードが間違っています。
+            </p>
+          </form>
+        </div>
       </div>
-    </form>
-    </main>
+    </div>
   <footer>
   </footer>
 </body>
