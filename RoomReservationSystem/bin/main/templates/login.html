@@ -8,8 +8,13 @@
   </head>
   <body class="bg-light">
     <header th:replace="header"></header>
-    <div class="container d-flex align-items-center">
-      <div class="mx-auto card w-50">
+     <p role="alert" class="mx-2 my-2 alert alert-danger" th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"  th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}">
+              ログインIDまはたパスワードが間違っています。
+    </p>
+    <div class="container">
+    <div class="row h-100 align-items-center">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="my-auto card w-100">
         <div class="card-header bg-primary text-white">
           ログイン
         </div>
@@ -36,11 +41,10 @@
                 ログイン
               </button>
             </div>
-            <p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"  th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}">
-              ログインIDまはたパスワードが間違っています。
-            </p>
           </form>
         </div>
+      </div>
+      </div>
       </div>
     </div>
   <footer>
