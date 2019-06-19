@@ -15,15 +15,15 @@ public class ReservationsService {
 	@Autowired
 	ReservationsRepository reservationsRepository;
 
-	public List<Reservation> getAllReservationList() {
+	public List<Reservation> findAllReservations() {
 		return reservationsRepository.findAll();
 	}
 	
-	public List<Reservation> getReservationListByUseDate(LocalDate useDate){
+	public List<Reservation> findReservationsByUseDate(LocalDate useDate){
 		return reservationsRepository.findByUseDate(useDate);
 	}
 	
-	public List<Reservation> getTimeOverlapReservationList(LocalDate useDate, LocalTime useStartTime, LocalTime useEndTime){
+	public List<Reservation> findTimeOverlapReservations(LocalDate useDate, LocalTime useStartTime, LocalTime useEndTime){
 		return reservationsRepository.findTimeOverlapReservation(useDate, useStartTime, useEndTime);
 	}
 }

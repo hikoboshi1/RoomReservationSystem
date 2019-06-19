@@ -34,6 +34,6 @@ public interface ReservationsRepository extends JpaRepository<Reservation, Integ
 			+ "(:useStartTime <= t.useStartTime and t.useStartTime < :useEndTime) or "
 			+ "(:useStartTime < useEndTime and useEndTime <= :useEndTime) or "
 			+ "(t.useStartTime <= :useStartTime and :useEndTime <= useEndTime))")
-	public List<Reservation> findTimeOverlapReservation(@Param("useDate") LocalDate useDate,
+	public List<Reservation> findTimeOverlapReservations(@Param("useDate") LocalDate useDate,
 			@Param("useStartTime") LocalTime useStartTime, @Param("useEndTime") LocalTime useEndTime);
 }
