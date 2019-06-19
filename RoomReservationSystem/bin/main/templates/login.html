@@ -8,43 +8,43 @@
   </head>
   <body class="bg-light">
     <header th:replace="header"></header>
-     <p role="alert" class="mx-2 my-2 alert alert-danger" th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"  th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}">
+    <p role="alert" class="mx-2 my-2 alert alert-danger" th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"  th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}">
               ログインIDまはたパスワードが間違っています。
     </p>
     <div class="container">
-    <div class="row h-100 align-items-center">
-    <div class="col-lg-6 offset-lg-3">
-      <div class="my-auto card w-100">
-        <div class="card-header bg-primary text-white">
-          ログイン
+      <div class="row h-100 align-items-center">
+        <div class="col-lg-6 offset-lg-3">
+          <div class="my-auto card w-100">
+            <div class="card-header bg-primary text-white">
+              ログイン
+            </div>
+            <div class="card-body">
+              <form th:action="@{/login}" method="post">
+                <div class="row my-3">
+                  <div class="col-sm-3">
+                    <label th:for="username" class="my-1">ユーザー名</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="username">
+                  </div>
+                </div>
+                <div class="row my-3">
+                  <div class="col-sm-3">
+                    <label th:for="password" class="my-1">パスワード</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <input type="password" class="form-control" name="password">
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="text-center btn btn-primary w-50">
+                    ログイン
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-        <div class="card-body">
-          <form th:action="@{/login}" method="post">
-            <div class="row my-3">
-              <div class="col-sm-3">
-                <label th:for="username" class="my-1">ユーザー名</label>
-              </div>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" name="username">
-              </div>
-            </div>
-            <div class="row my-3">
-              <div class="col-sm-3">
-                <label th:for="password" class="my-1">パスワード</label>
-              </div>
-              <div class="col-sm-9">
-                <input type="password" class="form-control" name="password">
-              </div>
-            </div>
-            <div class="text-center">
-              <button type="submit" class="text-center btn btn-primary w-50">
-                ログイン
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-      </div>
       </div>
     </div>
   <footer>
