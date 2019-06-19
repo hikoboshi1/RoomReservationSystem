@@ -31,7 +31,7 @@ public class ReservationsController {
 	}
 	
 	@RequestMapping(value = { "/new" })
-	public ModelAndView newReservation(ModelAndView mav, @RequestParam("date") Optional<String> id) {
+	public ModelAndView newReservation(ModelAndView mav, @RequestParam("date") Optional<String> date) {
 		mav.setViewName("reservations/edit");
 		return mav;
 	}
