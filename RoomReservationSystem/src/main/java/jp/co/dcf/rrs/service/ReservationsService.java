@@ -24,6 +24,6 @@ public class ReservationsService {
 	}
 	
 	public List<Reservation> findTimeOverlapReservations(LocalDate useDate, LocalTime useStartTime, LocalTime useEndTime){
-		return reservationsRepository.findTimeOverlapReservation(useDate, useStartTime, useEndTime);
+		return reservationsRepository.findTimeOverlapReservations(useDate, useStartTime, useEndTime);
 	}
 }

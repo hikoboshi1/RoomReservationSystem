@@ -24,7 +24,7 @@ public class ReservationsController {
 	
 	@RequestMapping({ "/","/list" })
 	public ModelAndView index(ModelAndView mav, @AuthenticationPrincipal User user) {
-		List<Reservation> reservationList = reservationsService.getAllReservationList();
+		List<Reservation> reservationList = reservationsService.findAllReservations();
 		mav.addObject("reservationList", reservationList);
 		mav.setViewName("reservations/list");
 		return mav;
