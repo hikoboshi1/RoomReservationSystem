@@ -1,0 +1,21 @@
+AbstractUserDetailsAuthenticationProvider:
+  badCredentials: "ログインIDまたはパスワードが間違っています。"
+
+required: "{0}は必須なため入力してください。"
+date: "{0}は日付を入力してください。"
+time: "{0}は時刻を入力してください。"
+two-elements-correleation: "{0}は{1}よりあとにする必要があります。"
+
+reservation-duplicate: "入力された予約情報は他の予約情報と重複しています。"
+no-reservations: "指定された日の予約はありません。"
+past-reservation: "過去に予約することはできません。"
+
+useDate: "利用日"
+useStartTime: "利用開始時刻"
+useEndTime: "利用終了時刻"
+reserver: "予約者"
+roomUsername: "予約日"
+note: "備考"
+
+roomUsername.maxlength: 15
+note.maxlength: 140

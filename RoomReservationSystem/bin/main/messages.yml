@@ -1,0 +1,5 @@
+AbstractUserDetailsAuthenticationProvider:
+  badCredentials: "ログインIDまたはパスワードが間違っています。"
+
+required: "{0}は必須なため入力してください。"
+date: "{0}は日付を入力してください。"

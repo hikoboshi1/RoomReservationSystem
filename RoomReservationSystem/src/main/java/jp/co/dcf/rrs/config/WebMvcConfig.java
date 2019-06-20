@@ -9,11 +9,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 	// propertiesファイル読み込み
-	@Bean
-	public MessageSource messageSource() {
-	    ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-	    messageSource.setBasename("messages");
-	    messageSource.setDefaultEncoding("UTF-8");
-	    return messageSource;
-	}
+   @Bean(name = "messagesProperties")
+    public Properties yamlProperties() throws IOException {
+        YamlPropertiesFactoryBean bean = new YamlPropertiesFactoryBean();
+        bean.setResources(new ClassPathResource("messages.yml"));
+        return bean.getObject();
+    }
+
+    @Bean
+    public MessageSource messageSource() throws IOException {
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setCommonMessages(yamlProperties());
+        return messageSource;
+    }
 }
