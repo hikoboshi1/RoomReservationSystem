@@ -37,7 +37,7 @@ public class ReservationsController {
 	}
 	
 	@RequestMapping(value = { "/{id}" })
-	public ModelAndView edit(ModelAndView mav, @PathVariable("id") Optional<Integer> id) {
+	public ModelAndView edit(ModelAndView mav, @PathVariable("id") Integer id) {
 		mav.addObject("id", id);
 		mav.setViewName("reservations/edit");
 		return mav;
