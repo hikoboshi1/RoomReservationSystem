@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,6 +22,9 @@ import jp.co.dcf.rrs.model.repository.UsersRepository;
 public class LoginService implements UserDetailsService {
 	@Autowired
 	private UsersRepository userRepository;
+	
+	@Autowired
+	private HttpSession session;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -28,7 +33,8 @@ public class LoginService implements UserDetailsService {
 			throw new UsernameNotFoundException("User " + username + " was not found in the database.");
 		}
 
-		User userTblEntity = userList.get(0);
-		return userTblEntity;
+		User user = userList.get(0);
+		session.setAttribute("loginUser", user);
+		return user;
 	}
 }
