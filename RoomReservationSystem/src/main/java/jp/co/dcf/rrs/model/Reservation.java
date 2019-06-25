@@ -22,32 +22,32 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.AUTO)
 	@Getter
 	@Setter
-	private Integer id = 0;
+	private Integer id;
 	/**
 	 * 利用日
 	 */
 	@Getter
 	@Setter
-	LocalDate useDate = LocalDate.of(1,1,1);
+	LocalDate useDate;
 	/**
 	 * 利用開始時刻
 	 */
 	@Getter
 	@Setter
-	LocalTime useStartTime = LocalTime.of(0,0);
+	LocalTime useStartTime;
 	/**
 	 * 利用終了時刻
 	 */
 	@Getter
 	@Setter
-	private LocalTime useEndTime = LocalTime.of(0,0);
+	private LocalTime useEndTime;
 	/**
 	 * 予約者
 	 */
 	@Getter
 	@Setter
 	@ManyToOne
-	private User reserver = new User();
+	private User reserver;
 
 	/**
 	 * 会議室利用者
