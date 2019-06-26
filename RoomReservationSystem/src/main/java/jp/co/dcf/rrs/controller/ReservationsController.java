@@ -22,6 +22,11 @@ public class ReservationsController {
 	@Autowired
 	ReservationsService reservationsService;
 	
+	@RequestMapping({""})
+	public String indexForward() {
+		return "forward:/";
+	}
+	
 	@RequestMapping({ "/","/list" })
 	public ModelAndView index(ModelAndView mav, @AuthenticationPrincipal User user) {
 		List<Reservation> reservationList = reservationsService.findAllReservations();
@@ -30,13 +35,13 @@ public class ReservationsController {
 		return mav;
 	}
 	
-	@RequestMapping(value = { "/new" })
+	@RequestMapping({ "/new" })
 	public ModelAndView newReservation(ModelAndView mav, @RequestParam("date") Optional<String> date) {
 		mav.setViewName("reservations/edit");
 		return mav;
 	}
 	
-	@RequestMapping(value = { "/{id}" })
+	@RequestMapping({ "/{id}" })
 	public ModelAndView edit(ModelAndView mav) {
 		mav.setViewName("reservations/edit");
 		return mav;
