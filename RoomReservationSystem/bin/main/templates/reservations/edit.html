@@ -1,17 +1,219 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<title>予約編集</title>
-	<link href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
-	<script src="../../javascript/script.js" th:href="@{/js/script.js}"></script>
+<meta charset="UTF-8">
+<title>予約編集</title>
+<link href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+	rel="stylesheet">
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+<script src="../../javascript/script.js" th:href="@{/js/script.js}"></script>
+<script type='text/javascript'
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 </head>
 <body>
-<header></header>
-<main>
-    <p>Hello, world!</p>
-    <p th:text="${reservationId}"></p>
-</main>
-<footer></footer>
+	<header th:replace="header"></header>
+	<main>
+
+
+		<!-- th:objectがth:value="*{useDate}"とかの*になる -->
+		<div class="container">
+			<div class="text-right">
+				<a href="/reservations/list" class="btn btn-primary col-mx-1 my-2" style="">HOMEへ戻る</a>
+			</div>
+			<form id="reservationForm" th:action="@{/reservations}"
+				th:object="${reservation}" method="post">
+				<div class="alert alert-danger" th:if="${errorMessage}!=null"
+					th:text="${errorMessage}"></div>
+				<div class="card my-2 px-2 py-2">
+					<div class="card-body">
+						<div class="row my-2">
+							<div class="col-lg-2 offset-lg-3 col-md-3 offset-md-2 my-auto">
+								<label for="useDate">利用日</label>
+							</div>
+							<div class="col-lg-4 col-md-5">
+								<div class="input-group date" id="useDate"
+									data-target-input="nearest">
+									<input id="useDate1" type="text"
+										class="form-control datetimepicker-input"
+										data-target="#useDate" name="useDate" th:value="*{useDate}"
+										th:disabled="${isRefMode}" />
+									<div class="input-group-append" data-target="#useDate"
+										data-toggle="datetimepicker">
+										<div class="input-group-text">
+											<i class="fa fa-calendar"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-2 my-auto">
+								<span id="useDate_err" class="text-danger align-middle"></span><span
+									class="text-danger align-middle"
+									th:if="#{fields.hasErrors('useDate')}" th:errors="*{useDate}"></span>
+							</div>
+							<div class="d-none">
+								<span id="useDateIsRequired" th:text="#{required(#{useDate})}"></span>
+								<span id="useDateIsDate" th:text="#{date(#{useDate})}"></span>
+							</div>
+						</div>
+
+						<div class="row my-2">
+							<div class="col-lg-2 offset-lg-3 col-md-3 offset-md-2 my-auto">
+								<label for="useStartTime">利用開始時刻</label>
+							</div>
+							<div class="col-lg-4 col-md-5">
+								<div class="input-group time" id="useStartTime"
+									data-target-input="nearest">
+									<input id="useStartTime1" type="text"
+										class="form-control datetimepicker-input"
+										data-target="#useStartTime" name="useStartTime"
+										th:value="*{useStartTime}" th:disabled="${isRefMode}" />
+									<div id="time1" class="input-group-append" data-target="#useStartTime"
+										data-toggle="datetimepicker">
+										<div id="time2" class="input-group-text">
+											<i id="time3" class="fa fa-clock"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-2 my-auto">
+								<span id="useStartTime_err" class="text-danger align-middle"></span>
+								<span class="text-danger align-middle"
+									th:if="#{fields.hasErrors('useStartTime')}"
+									th:errors="*{useStartTime}"></span>
+							</div>
+							<div class="d-none">
+								<span id="useStartTimeIsRequired"
+									th:text="#{required(#{useStartTime})}"></span> <span
+									id="useStartTimeIsTime" th:text="#{time(#{useStartTime})}"></span>
+								<span id="startDateTimeIsFuture"
+									th:text="#{reservation.future-required}"></span>
+							</div>
+						</div>
+
+						<div class="row my-2">
+							<div class="col-lg-2 offset-lg-3 col-md-3 offset-md-2 my-auto">
+								<label for="useEndTime">利用終了時刻</label>
+							</div>
+							<div class="col-lg-4 col-md-5">
+								<div class="input-group time" id="useEndTime"
+									data-target-input="nearest">
+									<input id="useEndTime1" type="text"
+										class="form-control datetimepicker-input"
+										data-target="#useEndTime" name="useEndTime"
+										th:value="*{useEndTime}" th:disabled="${isRefMode}" />
+									<div class="input-group-append" data-target="#useEndTime"
+										data-toggle="datetimepicker">
+										<div class="input-group-text">
+											<i class="fa fa-clock"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-2 my-auto">
+								<span id="useEndTime_err" class="text-danger align-middle"></span>
+								<span class="text-danger align-middle"
+									th:if="#{fields.hasErrors('useEndTime')}"
+									th:errors="*{useEndTime}"></span>
+							</div>
+							<div class="d-none">
+								<span id="useEndTimeIsRequired"
+									th:text="#{required(#{useEndTime})}"></span> <span
+									id="useEndTimeIsTime" th:text="#{time(#{useEndTime})}"></span>
+								<span id="startTimeIsBeforeEnd"
+									th:text="#{end-is-after-start(#{useStartTime},#{useEndTime})}"></span>
+							</div>
+						</div>
+
+						<div class="row my-2">
+							<div class="col-lg-2 offset-lg-3 col-md-3 offset-md-2 my-auto">
+								<label for="reserver">予約者名</label>
+							</div>
+							<div class="col-lg-4 col-md-5">
+								<input id="reserver" type="text" class="form-control"
+									name="reserver" th:value="*{reserver.username}" disabled>
+							</div>
+						</div>
+						<div class="row my-2">
+							<div class="col-lg-2 offset-lg-3 col-md-3 offset-md-2 my-auto">
+								<label for="roomUsename">利用者名</label>
+							</div>
+							<div class="col-lg-4 col-md-5">
+								<input type="text" class="form-control datetimepicker-input"
+									name="roomUsername" th:value="*{roomUsername}"
+									th:disabled="${isRefMode}">
+							</div>
+							<div class="col-md-2 my-auto">
+								<span id="roomUsername_err" class="text-danger align-middle"></span>
+								<span class="text-danger align-middle"
+									th:if="#{fields.hasErrors('roomUsername')}"
+									th:errors="*{roomUsername}"></span>
+							</div>
+							<div class="d-none">
+								<span id="roomUserNameIsRequired"
+									th:text="#{required(#{roomUsername})}"></span> <span
+									id="roomUsernameMaxLength"
+									th:text="#{maxlength(#{roomUsername},#{roomUsername.maxlength})}"></span>
+								<span id="numOfRoomUsernameMaxLength"
+									th:text="#{roomUsername.maxlength}"></span>
+							</div>
+						</div>
+
+						<div class="row my-2">
+							<div class="col-lg-2 offset-lg-3 col-md-3 offset-md-2 my-auto">
+								<label for="note">備考</label>
+							</div>
+							<div class="col-lg-4 col-md-5">
+								<textarea id="note" class="form-control" name="note"
+									th:text="*{note}" th:disabled="${isRefMode}"></textarea>
+							</div>
+							<div class="col-md-2 my-auto">
+								<span id="note_err" class="text-danger align-middle"></span> <span
+									class="text-danger align-middle"
+									th:if="#{fields.hasErrors('note')}" th:errors="*{note}"></span>
+							</div>
+							<div class="d-none">
+								<span id="noteMaxLength"
+									th:text="#{maxlength(#{note},#{note.maxlength})}"></span>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+								<div class="row">
+									<button type="submit" class="btn btn-primary col mx-1"
+										th:classappend="${isNewMode} ? '' : 'd-none' " name="_method"
+										value="post" th:disabled="${isEditMode} ? true : false">追加</button>
+									<button type="submit" class="btn btn-primary col mx-1"
+										th:classappend="${isNewMode} ? 'd-none' : '' " name="_method"
+										value="patch" th:disabled="${isEditMode} ? false : true">更新</button>
+									<button type="submit" class="btn btn-danger col mx-1"
+										th:classappend="${isNewMode} ? 'd-none' : '' " name="_method"
+										value="delete" th:disabled="${isEditMode} ? false : true"
+										formnovalidate="formnovalidate">削除</button>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<p th:text="${reservationId}"></p>
+	</main>
+	<footer></footer>
 </body>
 </html>

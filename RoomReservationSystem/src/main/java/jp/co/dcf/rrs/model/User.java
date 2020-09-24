@@ -19,6 +19,7 @@ import lombok.Setter;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "user_tbl")
+@EqualsAndHashCode(of= {"id"}) //equalsメソッドを使えるようにする。loginUserのidと、予約idを強制的に紐づける。
 public class User implements UserDetails{
 	static final List<GrantedAuthority> AUTHORITIES = new ArrayList<GrantedAuthority>();
 	

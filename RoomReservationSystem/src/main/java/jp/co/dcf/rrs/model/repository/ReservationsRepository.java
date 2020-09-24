@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import jp.co.dcf.rrs.model.Reservation;
 
+//LocalDate型を引数にReservationクラスが対応しているテーブルに対し、日付を条件に検索してくれるメソッド(複数ある可能性を考慮してList型で返す)
 @Repository
 public interface ReservationsRepository extends JpaRepository<Reservation, Integer> {
 	/**
@@ -34,6 +35,7 @@ public interface ReservationsRepository extends JpaRepository<Reservation, Integ
 			+ "(:useStartTime <= t.useStartTime and t.useStartTime < :useEndTime) or "
 			+ "(:useStartTime < useEndTime and useEndTime <= :useEndTime) or "
 			+ "(t.useStartTime <= :useStartTime and :useEndTime <= useEndTime))")
+	
 	public List<Reservation> findTimeOverlapReservations(@Param("useDate") LocalDate useDate,
 			@Param("useStartTime") LocalTime useStartTime, @Param("useEndTime") LocalTime useEndTime);
 }

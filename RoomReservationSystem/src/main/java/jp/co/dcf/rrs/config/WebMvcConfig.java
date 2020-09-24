@@ -44,7 +44,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		try {
 			return validator();
 		} catch (IOException e) {
-			log.error(e);
 			return null;
 		}
     }

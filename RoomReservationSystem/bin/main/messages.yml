@@ -1,12 +1,12 @@
 AbstractUserDetailsAuthenticationProvider:
   badCredentials: "ログインIDまたはパスワードが間違っています。"
 
-required: "{0}は必須なため入力してください。"
+required: "{0}入力必須なため入力してください。"
 date: "{0}は日付を入力してください。"
 typeMismatch.java.time.LocalDate: "{0}は日付を入力してください。"
 time: "{0}は時刻を入力してください。"
 typeMismatch.java.time.LocalTime: "{0}は時刻を入力してください。"
-maxlength: "{0}は{1}文字以下で入力してください。"
+maxlength: "{0} {1}文字以下で入力してください。"
 end-is-after-start: "{0}は{1}よりあとにする必要があります。"
 
 reservation:
