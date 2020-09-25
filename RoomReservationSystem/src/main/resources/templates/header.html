@@ -1,5 +1,7 @@
 <header class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" th:href="@{~/}">会議室予約システム</a>
-    <span class="navbar-nav navbar ml-auto mr-2 text-light" th:text="|ようこそ${session.loginUser.username}さん|" th:unless="${session.loginUser}==null"></span>
-    <a href="/logout" class="btn btn-primary" >ログアウト</a>
+	<a class="navbar-brand" th:href="@{~/}">会議室予約システム</a> <span
+		class="navbar-nav navbar ml-auto mr-2 text-light"
+		th:text="|ようこそ${session.loginUser.username}さん|"
+		th:unless="${session.loginUser}==null"></span> <a href="/logout"
+		class="btn btn-primary">ログアウト</a>
 </header>

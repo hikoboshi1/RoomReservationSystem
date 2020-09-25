@@ -19,7 +19,7 @@ import lombok.Setter;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "user_tbl")
-@EqualsAndHashCode(of= {"id"}) //equalsメソッドを使えるようにする。loginUserのidと、予約idを強制的に紐づける。
+@EqualsAndHashCode(of= {"id"}) //equalsメソッドを使えるようにする。loginUserのidと、予約者idを強制的に紐づける。
 public class User implements UserDetails{
 	static final List<GrantedAuthority> AUTHORITIES = new ArrayList<GrantedAuthority>();
 	
@@ -50,7 +50,7 @@ public class User implements UserDetails{
 	 */
 	@Getter
 	@Setter
-	@OneToMany(mappedBy = "reserver")
+	@OneToMany(mappedBy = "reserver")//Reservation_tblのreserverと結合
 	private List<Reservation> reservations = new ArrayList<Reservation>();
 
 	@Override

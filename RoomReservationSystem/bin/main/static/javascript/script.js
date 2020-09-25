@@ -1,6 +1,5 @@
 	//利用開始時刻を入力したら、自動で1時間後の値を利用終了時刻に入れる
-	const get = function (start){
-	console.log(moment("20:00", "HH:mm"))
+	const autoAddTime = function (start){
 		if(start != ''){
 			let startMoment = moment(start, "HH:mm");
 			let endMoment = moment(startMoment).add(1,'h').format('HH:mm');
@@ -12,23 +11,28 @@
 $(function(){
 	$('.date').datetimepicker({
     	format:'YYYY-MM-DD',
-  	});
+    	daysOfWeekDisabled: [0, 6]
+  	}); 	
   	
   	$('#dateForm').on('change.datetimepicker', function(e){
   		$("#dateForm").attr('action',"");
   		$("#dateForm").submit();
   	});
   	
+  	
+  	
   	$('.time').datetimepicker({
     	format:'HH:mm',
+    	
   	});
   	
   	$('#useStartTime1').on('change.timepicker', function(e){
-  		$('#useEndTime1').val(get($('#useStartTime1').val()));		
+  		$('#useEndTime1').val(autoAddTime($('#useStartTime1').val()));		
 	});
-	$('#time2').on('change.timepicker', function(e){
-		$('#useEndTime1').val(get($('time2').val()));
+	$('#timepicker').on('change', function(e){
+		$('#useEndTime1').val(autoAddTime($('#timepicker').val()));
 	});
+	
 	  	
 });
   	var toDate = function(dateStr, timeStr){

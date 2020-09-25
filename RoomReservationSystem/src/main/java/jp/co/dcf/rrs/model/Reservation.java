@@ -16,12 +16,16 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import jp.co.dcf.rrs.model.validator.DateTimeIsFuture;
 import jp.co.dcf.rrs.model.validator.EndIsAfterStart;
+import jp.co.dcf.rrs.model.validator.Holiday;
+import jp.co.dcf.rrs.model.validator.OutsideHours;
 import lombok.Getter;
 import lombok.Setter;
 @Entity
 @Table(name = "reservation_tbl")
 @EndIsAfterStart(element1="useStartTime", element2="useEndTime")
 @DateTimeIsFuture(element1="useDate", element2="useStartTime")
+@Holiday(element1="useDate")
+@OutsideHours(element1 = "useStartTime", element2 = "useEndTime")
 public class Reservation {
 	/**
 	 * 主キー
@@ -60,9 +64,9 @@ public class Reservation {
 	 */
 	@Getter
 	@Setter
-	@ManyToOne
+	@ManyToOne//User.javaでは@OneToManyと記述
 	@NotNull(message="{required}")
-	private User reserver;
+	private User reserver; //外部キー
 
 	/**
 	 * 会議室利用者

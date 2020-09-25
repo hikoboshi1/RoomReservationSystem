@@ -23,13 +23,17 @@ public class ReservationsService {
 	@Autowired
 	ReservationsRepository reservationsRepository;
 
-	public List<Reservation> findAllReservations() {
-		return reservationsRepository.findAll();
+	//ControllerからUser情報を手に入れたので、idを参考にRepositoryで呼ぶ
+	public List<Reservation> findReservationsByReserver(User reserver) {
+		
+		return reservationsRepository.findByReserverId(reserver.getId());
 	}
+	
 	//日付(useDae)を基準にRepositoryクラスでListを返す(→検索はRepositoryクラスで行っている)
 	public List<Reservation> findReservationsByUseDate(LocalDate useDate){
 		return reservationsRepository.findByUseDate(useDate);
 	}
+	
 	public List<Reservation> findReservationsByUseDate(String useDateStr){ 
 		LocalDate useDate;
 		try {

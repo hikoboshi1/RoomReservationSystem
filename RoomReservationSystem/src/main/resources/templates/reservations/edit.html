@@ -22,16 +22,16 @@
 <script src="../../javascript/script.js" th:href="@{/js/script.js}"></script>
 <script type='text/javascript'
 	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+	
 </head>
 <body>
 	<header th:replace="header"></header>
 	<main>
-
-
 		<!-- th:objectがth:value="*{useDate}"とかの*になる -->
 		<div class="container">
 			<div class="text-right">
-				<a href="/reservations/list" class="btn btn-primary col-mx-1 my-2" style="">HOMEへ戻る</a>
+				<a href="/reservations/list" class="btn btn-primary col-mx-1 my-2"
+					>HOMEへ戻る</a>
 			</div>
 			<form id="reservationForm" th:action="@{/reservations}"
 				th:object="${reservation}" method="post">
@@ -50,10 +50,10 @@
 										class="form-control datetimepicker-input"
 										data-target="#useDate" name="useDate" th:value="*{useDate}"
 										th:disabled="${isRefMode}" />
-									<div class="input-group-append" data-target="#useDate"
+									<div id="calendar3" class="input-group-append" data-target="#useDate"
 										data-toggle="datetimepicker">
-										<div class="input-group-text">
-											<i class="fa fa-calendar"></i>
+										<div id="calendar2" class="input-group-text">
+											<i id="calendar1" class="fa fa-calendar"></i>
 										</div>
 									</div>
 								</div>
@@ -80,10 +80,10 @@
 										class="form-control datetimepicker-input"
 										data-target="#useStartTime" name="useStartTime"
 										th:value="*{useStartTime}" th:disabled="${isRefMode}" />
-									<div id="time1" class="input-group-append" data-target="#useStartTime"
-										data-toggle="datetimepicker">
-										<div id="time2" class="input-group-text">
-											<i id="time3" class="fa fa-clock"></i>
+									<div id="timepicker" class="input-group-append timepicker"
+										data-target="#useStartTime" data-toggle="datetimepicker">
+										<div class="input-group-text">
+											<i class="fa fa-clock"></i>
 										</div>
 									</div>
 								</div>
@@ -144,6 +144,8 @@
 							<div class="col-lg-4 col-md-5">
 								<input id="reserver" type="text" class="form-control"
 									name="reserver" th:value="*{reserver.username}" disabled>
+								<!--  th:valueのreserverは、Reservationモデルのreserverのこと
+										reserverの持つuser_tblのカラムを取得する -->
 							</div>
 						</div>
 						<div class="row my-2">

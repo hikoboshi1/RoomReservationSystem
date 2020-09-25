@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import jp.co.dcf.rrs.model.Reservation;
+import jp.co.dcf.rrs.model.User;
 
 //LocalDate型を引数にReservationクラスが対応しているテーブルに対し、日付を条件に検索してくれるメソッド(複数ある可能性を考慮してList型で返す)
 @Repository
@@ -20,8 +21,11 @@ public interface ReservationsRepository extends JpaRepository<Reservation, Integ
 	 * @param useDate
 	 * @return
 	 */
+	//Springの持つ仕様で、Repositoryクラスのメソッド名は、findBy<カラム名>で作ることで自動でDBの絞り込みをする
 	public List<Reservation> findByUseDate(LocalDate useDate);
 
+	//予約者IDで絞り込む
+	public List<Reservation> findByReserverId(Integer reserverId);
 	/**
 	 * 重複時間検索
 	 * 
@@ -38,4 +42,7 @@ public interface ReservationsRepository extends JpaRepository<Reservation, Integ
 	
 	public List<Reservation> findTimeOverlapReservations(@Param("useDate") LocalDate useDate,
 			@Param("useStartTime") LocalTime useStartTime, @Param("useEndTime") LocalTime useEndTime);
+	
+	
+	
 }

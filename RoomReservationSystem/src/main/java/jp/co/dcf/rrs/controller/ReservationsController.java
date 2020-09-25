@@ -58,8 +58,7 @@ public class ReservationsController {
 		List<Reservation> reservationList = reservationsService.findReservationsByUseDate(useDate);
 	    
 		//カレンダーで指定した日の予約が無ければ、その旨のメッセージを表示
-		if(reservationList.isEmpty())
-	    {
+		if(reservationList.isEmpty()){
 			//メッセージは、reservation.not-anyにあるのを利用
 	    	String message = messageSource.getMessage("reservation.not-any", null, null);
 	        mav.addObject("message", message);
@@ -68,16 +67,31 @@ public class ReservationsController {
 		mav.setViewName("reservations/list");
 		return mav;
 	}
+	@RequestMapping({ "/mylist" })
+	public ModelAndView myReservation(ModelAndView mav, @AuthenticationPrincipal User reserver) {
+		
+		List<Reservation> reservationList = reservationsService.findReservationsByReserver(reserver);
+		if(reservationList.isEmpty()) {
+			//メッセージは、reservation.not-anyにあるのを利用
+	    	String message = messageSource.getMessage("reservation.not-any", null, null);
+	        mav.addObject("message", message);
+		}
+		mav.addObject("reservationList", reservationList);
+		mav.setViewName("reservations/myReservation");
+		return mav;
+	}
 	
 	@RequestMapping({ "/new" })
-	public ModelAndView newReservation(ModelAndView mav, @RequestParam("date") Optional<String> dateParam, @AuthenticationPrincipal User loginUser) {
+	public ModelAndView newReservation(ModelAndView mav, @RequestParam("date") Optional<String> dateParam, @RequestParam("date1") Optional<String> dateParam1, @AuthenticationPrincipal User loginUser) {
 		Reservation reservation = new Reservation();
 	  //新規　新規作成ボタン横の日付と、新規作成ボタンを押してページを飛んだ先の利用日が一致する
 		String useDate = dateParam.orElse(LocalDate.now().format(FormatConstants.JS_DATE));
 		reservation.setUseDate(LocalDate.parse(useDate, FormatConstants.JS_DATE));		
 		
-		reservation.setReserver(loginUser); //新規作成の予約者名には、ログインユーザー名を初期表示させる
+		//新規作成の予約者名には、ログインユーザー名を初期表示させる
+		reservation.setReserver(loginUser); 
 		mav.addObject("reservation",reservation);
+		
 		mav.addObject("isNewMode", true);
 		mav.setViewName("reservations/edit");
 		return mav;
